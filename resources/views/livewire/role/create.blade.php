@@ -25,7 +25,8 @@
                             {{ __('messages.submit_button_text') }}
                             <x-button-progress-bar wire:loading wire:target='store' />
                         </x-button-primary>
-                        <a href="/role" class="btn btn-secondary btn-sm" wire:navigate>{{ __('messages.cancel_button_text') }}</a>
+
+                        <a id="kt_drawer_chat_close" @click="hide()" class="btn btn-secondary btn-sm" wire:navigate>{{ __('messages.cancel_button_text') }}</a>
                     </div>
                     <!-- end::Action Button -->
                 </form>
