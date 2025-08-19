@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Livewire\Brand\Import;
+
+use Livewire\Component;
+
+class ImportErrorPage extends Component
+{
+    public $errorLogs;
+
+    #[\Livewire\Attributes\On('viewImportErrors')]
+    /**
+     * show
+     *
+     * @param  mixed $opusPcId
+     * @return void
+     */
+    public function updateBlockStatus($errorLogs)
+    {
+        $this->errorLogs = json_decode($errorLogs);
+        $this->dispatch('show-modal', id: '#importErrorShowModal');
+    }
+
+    /**
+     * closeModal
+     *
+     * @return void
+     */
+    public function closeModal()
+    {
+        $this->dispatch('hide-modal', id: '#importErrorShowModal');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
+    public function render()
+    {
+        return view('livewire.brand.import.import-error-page');
+    }
+}
